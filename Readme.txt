@@ -17,6 +17,9 @@ $ ./buildExec.sh
 When it runs, it will loop through the various optimization levels and pipe
 the output to `output.ON.txt` where N is the optimization level.
 
+If you don't wish to run this on your system, you can see the ouput from
+my system in the `output.ON.txt` files.
+
 Also important: the way this loop is designed, it it is logically incorrect.
 The `i <= iEnd` should be `i < iEnd`. When this is changed, the program
 runs as desired with all optimization levels.
