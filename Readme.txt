@@ -1,3 +1,12 @@
+Apparently, this is known:
+	https://gcc.gnu.org/bugs/#nonbugs_c
+
+Compiling with -fno-aggressive-loop-optimizations addresses the issue.
+
+Leaving this public in case it's useful for anyone.
+
+
+--------------------------------------------------------------------------------
 This is an example of a possible bug in the GCC-12 compiler when nesting loops
 and reading past the end of array bounds.
 
