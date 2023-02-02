@@ -1,4 +1,30 @@
+This is an example of a possible bug in the GCC compiler when nesting loops
+and reading past the end of array bounds.
 
+When compiling with -O2 or -O3, and there are _reads_ (no writes)
+past the end of the tokens array, `i > iEnd` is never triggered,
+and the program eventually segfaults.
+
+Compiling without optimizations or with -O1 appears to compile
+and execute correctly. Compiling with -O2 or -O3 results in segfaults.
+
+To run this on your system:
+$ git clone git@github.com:benwills/gcc_nested_loop_optimizer_bug.git
+$ cd gcc_nested_loop_optimizer_bug
+$ chmod a+x buildExec.sh
+$ ./buildExec.sh
+
+When it runs, it will loop through the various optimization levels and pipe
+the output to `output.ON.txt` where N is the optimization level.
+
+Also important: the way this loop is designed, it it is logically incorrect.
+The `i <= iEnd` should be `i < iEnd`. When this is changed, the program
+runs as desired with all optimization levels.
+
+So it may be important to note that this error occurs on logically-incorrect
+code.
+
+My system is running gcc-12:
 
 $ gcc-12 -v
 Using built-in specs.
