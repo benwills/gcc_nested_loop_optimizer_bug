@@ -1,4 +1,4 @@
-This is an example of a possible bug in the GCC compiler when nesting loops
+This is an example of a possible bug in the GCC-12 compiler when nesting loops
 and reading past the end of array bounds.
 
 When compiling with -O2 or -O3, and there are _reads_ (no writes)
